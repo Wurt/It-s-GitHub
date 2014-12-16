@@ -1,0 +1,22 @@
+﻿@model ItsGitHub.Models.Assignment
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(m => m.title)
+        @Html.TextBoxFor(m => m.title)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.content)
+        @Html.TextAreaFor(m => m.content)
+    </p>
+
+    <p>
+        <label>&nbsp</label>
+        <input type="submit" value="Create" />
+    </p>
+}

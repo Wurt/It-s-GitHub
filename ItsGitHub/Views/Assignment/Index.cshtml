@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ItsGitHub.Models.Assignment>
+
+<h2>Assignments</h2>
+
+
+<div class="container">
+        <div class="assignment">
+            <ul>
+                @foreach (var assignment in Model)
+                {
+                    <li><a href="@Url.Action("Details", new { id = @assignment.ID })">@assignment.title</a></li>
+                }
+            </ul>
+        </div>
+    <p><a href="@Url.Action("Create")">Create new assignment</a></p>
+</div>
