@@ -1,10 +1,13 @@
-﻿@model ItsGitHub.Models.Assignment
+﻿@{
+    @model ItsGitHub.Models.Assignment
+    ViewBag.Title = "Assignment - " + @Model.title;
+}
 
 
 
 <div class="container">
         <div class="assignment">
             <h1>@Model.title</h1>
-            <p>@Model.content</p>
+            @Html.Markdown(Model.content)
         </div>
 </div>
