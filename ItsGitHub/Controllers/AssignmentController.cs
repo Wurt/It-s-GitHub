@@ -23,10 +23,17 @@ namespace ItsGitHub.Controllers
 
         public ActionResult Details(int id)
         {
+            AssignmentViewModel assignmentViewModel = new AssignmentViewModel();
             var assignments = db.Assignment;
             var assignment = assignments.Where(a => a.ID == id).SingleOrDefault();
 
-            return View(assignment);
+            // Get comments for assignments as well
+            var comments = assignment.Comments.Where(a => a.AssignmentId == assignment.ID).ToList();
+
+            assignmentViewModel.Assignment = assignment;
+            assignmentViewModel.Comments = comments;
+
+            return View(assignmentViewModel);
         }
 
         [HttpPost]

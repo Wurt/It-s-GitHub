@@ -1,13 +1,14 @@
 ﻿@{
-    @model ItsGitHub.Models.Assignment
-    ViewBag.Title = "Assignment - " + @Model.title;
+    @model ItsGitHub.Models.AssignmentViewModel
+    ViewBag.Title = "Assignment - " + @Model.Assignment.title;
 }
 
 
 
 <div class="container">
-        <div class="assignment">
-            <h1>@Model.title</h1>
-            @Html.Markdown(Model.content)
-        </div>
+    <div class="assignment">
+        <h1>@Model.Assignment.title</h1>
+        @Html.Markdown(Model.Assignment.title)
+    </div>
+    <p><a href="@Url.Action("AddComment")">Add new comment</a></p>
 </div>
