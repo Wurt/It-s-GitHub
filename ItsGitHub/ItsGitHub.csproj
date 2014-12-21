@@ -123,6 +123,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AssignmentController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,6 +142,7 @@
     <Compile Include="Models\AssignmentContext.cs" />
     <Compile Include="Models\AssignmentViewModel.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CommentContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +181,7 @@
     <Content Include="Views\Assignment\Create.cshtml" />
     <Content Include="Views\Assignment\Index.cshtml" />
     <Content Include="Views\Assignment\Details.cshtml" />
+    <Content Include="Views\Comment\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201412162224427_InitialCreate.resx">
