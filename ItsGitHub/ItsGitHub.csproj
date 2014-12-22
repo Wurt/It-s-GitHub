@@ -139,10 +139,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Assignment.cs" />
-    <Compile Include="Models\AssignmentContext.cs" />
+    <Compile Include="Models\ItsGitHubContext.cs" />
     <Compile Include="Models\AssignmentViewModel.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\CommentContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

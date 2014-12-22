@@ -5,7 +5,7 @@ namespace ItsGitHub.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ItsGitHub.Models.AssignmentContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ItsGitHub.Models.ItsGitHubContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace ItsGitHub.Migrations
             ContextKey = "ItsGitHub.Models.AssignmentContext";
         }
 
-        protected override void Seed(ItsGitHub.Models.AssignmentContext context)
+        protected override void Seed(ItsGitHub.Models.ItsGitHubContext context)
         {
             //  This method will be called after migrating to the latest version.
 

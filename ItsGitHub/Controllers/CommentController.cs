@@ -24,6 +24,6 @@ namespace ItsGitHub.Controllers
             return RedirectToAction("Create");
         }
 
-        private CommentContext db = new CommentContext();
+        private ItsGitHubContext db = new ItsGitHubContext();
     }
 }

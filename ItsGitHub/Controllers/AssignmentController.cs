@@ -45,6 +45,6 @@ namespace ItsGitHub.Controllers
             return RedirectToAction("Create");
         }
 
-        private AssignmentContext db = new AssignmentContext();
+        private ItsGitHubContext db = new ItsGitHubContext();
     }
 }

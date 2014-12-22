@@ -6,8 +6,9 @@ using System.Data.Entity;
 
 namespace ItsGitHub.Models
 {
-    public class AssignmentContext : DbContext
+    public class ItsGitHubContext : DbContext
     {
         public DbSet<Assignment> Assignment { get; set; }
+        public DbSet<Comment> Comment { get; set; }
     }
 }
