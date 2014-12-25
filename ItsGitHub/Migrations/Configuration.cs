@@ -9,8 +9,8 @@ namespace ItsGitHub.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "ItsGitHub.Models.AssignmentContext";
+            AutomaticMigrationsEnabled = true;
+            ContextKey = "ItsGitHub.Models.ItsGitHubContext";
         }
 
         protected override void Seed(ItsGitHub.Models.ItsGitHubContext context)

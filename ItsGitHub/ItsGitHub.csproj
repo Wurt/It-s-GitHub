@@ -129,14 +129,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MarkdownHelper.cs" />
-    <Compile Include="Migrations\201412162224427_InitialCreate.cs" />
-    <Compile Include="Migrations\201412162224427_InitialCreate.Designer.cs">
-      <DependentUpon>201412162224427_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412210235465_AddCommentClass.cs" />
-    <Compile Include="Migrations\201412210235465_AddCommentClass.Designer.cs">
-      <DependentUpon>201412210235465_AddCommentClass.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\ItsGitHubContext.cs" />
@@ -181,14 +173,6 @@
     <Content Include="Views\Assignment\Index.cshtml" />
     <Content Include="Views\Assignment\Details.cshtml" />
     <Content Include="Views\Comment\Add.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412162224427_InitialCreate.resx">
-      <DependentUpon>201412162224427_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412210235465_AddCommentClass.resx">
-      <DependentUpon>201412210235465_AddCommentClass.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -2,13 +2,20 @@
     @model ItsGitHub.Models.AssignmentViewModel
     ViewBag.Title = "Assignment - " + @Model.Assignment.title;
 }
+<style type="text/css">.comments { border: 1px solid grey;background-color: grey; }</style>
 
 
 
 <div class="container">
     <div class="assignment">
         <h1>@Model.Assignment.title</h1>
-        @Html.Markdown(Model.Assignment.title)
+        @Html.Markdown(Model.Assignment.content)
     </div>
-    <p><a href="@Url.Action("Add","Comment")">Add new comment</a></p>
+    <div class="comments">
+        @foreach (var item in Model.Comments)
+        {
+            <p>@item.Content</p>
+        }
+    </div>
+    <p><a href="@Url.Action("Add","Comment", new { assignmentId = @Model.Assignment.ID })">Add new comment</a></p>
 </div>

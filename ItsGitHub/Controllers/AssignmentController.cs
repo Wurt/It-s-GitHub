@@ -28,7 +28,7 @@ namespace ItsGitHub.Controllers
             var assignment = assignments.Where(a => a.ID == id).SingleOrDefault();
 
             // Get comments for assignments as well
-            var comments = assignment.Comments.Where(a => a.AssignmentId == assignment.ID).ToList();
+            var comments = db.Comment.Where(c => c.AssignmentId == id).ToList();
 
             assignmentViewModel.Assignment = assignment;
             assignmentViewModel.Comments = comments;
