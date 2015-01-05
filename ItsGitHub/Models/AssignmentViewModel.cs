@@ -8,6 +8,7 @@ namespace ItsGitHub.Models
     public class AssignmentViewModel
     {
         public List<Comment> Comments { get; set; }
+        public List<Response> Responses { get; set; }
         public Assignment Assignment { get; set; }
     }
 }

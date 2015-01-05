@@ -10,5 +10,7 @@ namespace ItsGitHub.Models
     {
         public DbSet<Assignment> Assignment { get; set; }
         public DbSet<Comment> Comment { get; set; }
+        public DbSet<Response> Response { get; set; }
+       
     }
 }

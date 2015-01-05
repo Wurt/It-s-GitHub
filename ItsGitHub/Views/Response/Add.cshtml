@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Add response";
+    @model ItsGitHub.Models.Response
+}
+
+<h2>Add</h2>
+
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(m => m.Content)
+        @Html.TextBoxFor(m => m.Content)
+    </p>
+
+    <p>
+        <label>&nbsp</label>
+        <input type="submit" value="Add" />
+    </p>
+}

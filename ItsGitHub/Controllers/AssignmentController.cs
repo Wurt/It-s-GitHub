@@ -20,7 +20,7 @@ namespace ItsGitHub.Controllers
         {
             return View();
         }
-
+        //Response
         public ActionResult Details(int id)
         {
             AssignmentViewModel assignmentViewModel = new AssignmentViewModel();
@@ -28,10 +28,11 @@ namespace ItsGitHub.Controllers
             var assignment = assignments.Where(a => a.ID == id).SingleOrDefault();
 
             // Get comments for assignments as well
+            var responses = db.Response.Where(c => c.AssignmentId == id).ToList();
             var comments = db.Comment.Where(c => c.AssignmentId == id).ToList();
-
             assignmentViewModel.Assignment = assignment;
             assignmentViewModel.Comments = comments;
+            assignmentViewModel.Responses = responses;
 
             return View(assignmentViewModel);
         }
