@@ -9,7 +9,7 @@ namespace ItsGitHub.Models
     {
         public int ID { get; set; }
         public string Content { get; set; }
-        public int AssignmentId { get; set; }
+        public int ResponseId { get; set; }
 
     }
 }

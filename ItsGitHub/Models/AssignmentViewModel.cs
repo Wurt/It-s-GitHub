@@ -10,5 +10,7 @@ namespace ItsGitHub.Models
         public List<Comment> Comments { get; set; }
         public List<Response> Responses { get; set; }
         public Assignment Assignment { get; set; }
+        public Response Response { get; set; }
+       
     }
 }

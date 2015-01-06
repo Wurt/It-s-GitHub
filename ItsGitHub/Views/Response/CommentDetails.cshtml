@@ -1,0 +1,45 @@
+﻿@{
+    @model ItsGitHub.Models.AssignmentViewModel
+    ViewBag.Title = "Response - " + @Model.Response.Content;
+}
+<style type="text/css">
+    .comments {
+        border: 1px solid grey;
+        background-color: grey;
+    }
+</style>
+
+
+
+<div class="container">
+    <div class="assignment">
+        <h1>@Model.Response.Content</h1>
+        @*    @Model.Assignment.title ken wel*@
+        @Html.Markdown(Model.Response.Content)
+    </div>
+
+</div>
+<style type="text/css">
+    .responses {
+        border: 1px solid pink;
+        background-color: pink;
+    }
+</style>
+
+
+
+<div class="container">
+
+    <div class="responses">
+@**@
+        @foreach (var item in Model.Comments)
+        {
+
+            <p>@item.Content</p>
+
+
+        }
+    </div>
+    <p><a href="@Url.Action("Add", "Comment", new { ResponseId = @Model.Response.ID })">Add new Comment</a></p>
+</div>
+

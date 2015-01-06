@@ -29,9 +29,11 @@ namespace ItsGitHub.Controllers
 
             // Get comments for assignments as well
             var responses = db.Response.Where(c => c.AssignmentId == id).ToList();
-            var comments = db.Comment.Where(c => c.AssignmentId == id).ToList();
+
+       
+         //   var comments = db.Comment.Where(c => c.ResponseId == id).ToList(); 
             assignmentViewModel.Assignment = assignment;
-            assignmentViewModel.Comments = comments;
+        //   assignmentViewModel.Comments = comments; 
             assignmentViewModel.Responses = responses;
 
             return View(assignmentViewModel);
@@ -45,6 +47,9 @@ namespace ItsGitHub.Controllers
 
             return RedirectToAction("Create");
         }
+
+
+
 
         private ItsGitHubContext db = new ItsGitHubContext();
     }

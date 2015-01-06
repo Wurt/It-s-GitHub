@@ -10,21 +10,21 @@ namespace ItsGitHub.Controllers
 {
     public class CommentController : Controller
     {
-        private int _assignmentId;
-        public ActionResult Add(int assignmentId)
+        private int _responseId;
+        public ActionResult Add(int responseId)
         {
-            _assignmentId = assignmentId;
+            _responseId = responseId;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(int assignmentId, Comment comment)
+        public ActionResult Add(int responseId, Comment comment)
         {
-            comment.AssignmentId = assignmentId;
+            comment.ResponseId = responseId;
             db.Comment.Add(comment);
             db.SaveChanges();
-
-            return RedirectToAction("Details", "Assignment", new { id = assignmentId});
+    
+            return RedirectToAction("CommentDetails", "Response", new { id = responseId });
         }
 
         private ItsGitHubContext db = new ItsGitHubContext();
