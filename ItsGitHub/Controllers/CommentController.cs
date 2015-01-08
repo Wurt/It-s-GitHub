@@ -1,4 +1,5 @@
 ﻿using ItsGitHub.Models;
+using Postal;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,6 +24,13 @@ namespace ItsGitHub.Controllers
             comment.AssignmentId = assignmentId;
             db.Comment.Add(comment);
             db.SaveChanges();
+
+            // Send email to student
+            dynamic email = new Email("Comment");
+            email.To = "bla@example.com";
+            email.CommentQuote = comment.Content;
+            email.CommentLink = String.Format("http://{0}{1}/{2}", System.Web.HttpContext.Current.Request.Url.Authority, "/Assignment/Details", assignmentId);
+            email.Send();
 
             return RedirectToAction("Details", "Assignment", new { id = assignmentId});
         }
