@@ -181,14 +181,11 @@
     <Content Include="Views\Assignment\Index.cshtml" />
     <Content Include="Views\Assignment\Details.cshtml" />
     <Content Include="Views\Comment\Add.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Response\Add.cshtml" />
     <Content Include="Views\Response\CommentDetails.cshtml" />
-=======
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Comment.cshtml" />
->>>>>>> origin/feature/comment-emails
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
