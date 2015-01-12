@@ -1,4 +1,5 @@
 ﻿using ItsGitHub.Models;
+using Postal;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,7 +24,7 @@ namespace ItsGitHub.Controllers
             comment.ResponseId = responseId;
             db.Comment.Add(comment);
             db.SaveChanges();
-    
+
             return RedirectToAction("CommentDetails", "Response", new { id = responseId });
         }
 
