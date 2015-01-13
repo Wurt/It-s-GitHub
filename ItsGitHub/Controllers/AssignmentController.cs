@@ -45,7 +45,7 @@ namespace ItsGitHub.Controllers
             db.Assignment.Add(assignment);
             db.SaveChanges();
 
-            return RedirectToAction("Create");
+            return RedirectToAction("Details", "Assignment", new { id = assignment.ID });
         }
 
 
