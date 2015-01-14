@@ -22,8 +22,8 @@ namespace ItsGitHub.Controllers
         public ActionResult Add(int responseId, Comment comment)
         {
             comment.ResponseId = responseId;
-            db.Comment.Add(comment);
-            db.SaveChanges();
+            _db.Comment.Add(comment);
+            _db.SaveChanges();
 
             // Send email
             dynamic email = new Email("Comment");
@@ -35,6 +35,6 @@ namespace ItsGitHub.Controllers
             return RedirectToAction("CommentDetails", "Response", new { id = responseId });
         }
 
-        private ItsGitHubContext db = new ItsGitHubContext();
+        private readonly ItsGitHubContext _db = new ItsGitHubContext();
     }
 }
