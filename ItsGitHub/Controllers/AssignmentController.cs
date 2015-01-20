@@ -29,11 +29,7 @@ namespace ItsGitHub.Controllers
 
             // Get comments for assignments as well
             var responses = db.Response.Where(c => c.AssignmentId == id).ToList();
-
-       
-         //   var comments = db.Comment.Where(c => c.ResponseId == id).ToList(); 
             assignmentViewModel.Assignment = assignment;
-        //   assignmentViewModel.Comments = comments; 
             assignmentViewModel.Responses = responses;
 
             return View(assignmentViewModel);
@@ -42,6 +38,7 @@ namespace ItsGitHub.Controllers
         [HttpPost]
         public ActionResult Create(Assignment assignment)
         {
+            
             db.Assignment.Add(assignment);
             db.SaveChanges();
 
