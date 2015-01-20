@@ -12,6 +12,7 @@
                 @foreach (var assignment in Model)
                 {
                     <li><a href="@Url.Action("Details", new { id = @assignment.ID })">@assignment.title</a></li>
+    @assignment.DateCreated
                 }
             </ul>
         </div>

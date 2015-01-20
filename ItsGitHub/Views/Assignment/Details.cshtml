@@ -37,7 +37,7 @@
             @foreach (var item in Model.Responses)
             {
                 //<p>@item.Content</p>
-                <p><a href="@Url.Action("CommentDetails", "Response", new { id = @item.ID })">@item.Content</a></p>
+                <p><a href="@Url.Action("CommentDetails", "Response", new { id = @item.ID })">@item.Content</a> @item.DateCreatedForResp </p>
 
             }
         </div>
