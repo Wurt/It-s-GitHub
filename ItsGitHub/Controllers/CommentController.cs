@@ -30,7 +30,7 @@ namespace ItsGitHub.Controllers
             email.To = "bla@example.com";
             email.CommentQuote = comment.Content;
             email.CommentLink = String.Format("http://{0}{1}/{2}", System.Web.HttpContext.Current.Request.Url.Authority, "/Response/Details", responseId);
-            email.Send();
+        //    email.Send();
 
             return RedirectToAction("CommentDetails", "Response", new { id = responseId });
         }
