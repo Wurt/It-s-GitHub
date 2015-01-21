@@ -32,7 +32,7 @@ namespace ItsGitHub.Controllers
             email.CommentLink = String.Format("http://{0}{1}/{2}", System.Web.HttpContext.Current.Request.Url.Authority, "/Response/Details", responseId);
         //    email.Send();
 
-            return RedirectToAction("CommentDetails", "Response", new { id = responseId });
+            return RedirectToAction("Details", "Response", new { id = responseId });
         }
 
         private readonly ItsGitHubContext _db = new ItsGitHubContext();

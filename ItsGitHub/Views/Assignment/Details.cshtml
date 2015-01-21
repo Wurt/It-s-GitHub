@@ -1,15 +1,20 @@
 ﻿@{
     @model ItsGitHub.Models.AssignmentViewModel
-    ViewBag.Title = "Assignment - " + @Model.Assignment.title;
+    ViewBag.Title = "Assignment - " + @Model.Assignment.Title;
 }
-<style type="text/css">.comments { border: 1px solid grey;background-color: grey; }</style>
+<style type="text/css">
+    .comments {
+        border: 1px solid grey;
+        background-color: grey;
+    }
+</style>
 
 
 
-    <div class="container">
+<div class="container">
     <div class="assignment">
-        <h1>@Model.Assignment.title</h1>
-        @Html.Markdown(Model.Assignment.content)
+        <h1>@Model.Assignment.Title</h1>
+        @Html.Markdown(Model.Assignment.Content)
     </div>
     @*
         <div class="comments">
@@ -22,24 +27,24 @@
 
     *@
 </div>
-    <style type="text/css">
-        .responses {
-            border: 1px solid pink;
-            background-color: pink;
+<style type="text/css">
+    .responses {
+        border: 1px solid pink;
+        background-color: pink;
+    }
+</style>
+
+
+
+<div class="container">
+
+    <div class="responses">
+        @foreach (var item in Model.Responses)
+        {
+            //<p>@item.Content</p>
+            <p><a href="@Url.Action("Details", "Response", new { id = @item.Id })">@item.Content</a> - @item.Created </p>
+
         }
-    </style>
-
-
-
-    <div class="container">
-
-        <div class="responses">
-            @foreach (var item in Model.Responses)
-            {
-                //<p>@item.Content</p>
-                <p><a href="@Url.Action("CommentDetails", "Response", new { id = @item.ID })">@item.Content</a> @item.DateCreatedForResp </p>
-
-            }
-        </div>
-        <p><a href="@Url.Action("Add", "Response", new { assignmentId = @Model.Assignment.ID })">Add new response</a></p>
     </div>
+    <p><a href="@Url.Action("Add", "Response", new { assignmentId = @Model.Assignment.Id })">Add new response</a></p>
+</div>

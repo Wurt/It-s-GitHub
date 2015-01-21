@@ -25,12 +25,11 @@ namespace ItsGitHub.Controllers
         {
             AssignmentViewModel assignmentViewModel = new AssignmentViewModel();
             var assignments = db.Assignment;
-            var assignment = assignments.Where(a => a.ID == id).SingleOrDefault();
+            var assignment = assignments.SingleOrDefault(a => a.Id == id);
 
             // Get comments for assignments as well
-            var responses = db.Response.Where(c => c.AssignmentId == id).ToList();
             assignmentViewModel.Assignment = assignment;
-            assignmentViewModel.Responses = responses;
+            assignmentViewModel.Responses = assignment.Responses;
 
             return View(assignmentViewModel);
         }
@@ -42,7 +41,7 @@ namespace ItsGitHub.Controllers
             db.Assignment.Add(assignment);
             db.SaveChanges();
 
-            return RedirectToAction("Details", "Assignment", new { id = assignment.ID });
+            return RedirectToAction("Details", "Assignment", new { id = assignment.Id });
         }
 
 

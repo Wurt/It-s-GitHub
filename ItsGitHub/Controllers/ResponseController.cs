@@ -11,6 +11,7 @@ namespace ItsGitHub.Controllers
     public class ResponseController : Controller
     {
         private int _assignmentId;
+
         public ActionResult Add(int assignmentId)
         {
             _assignmentId = assignmentId;
@@ -24,21 +25,17 @@ namespace ItsGitHub.Controllers
             db.Response.Add(response);
             db.SaveChanges();
 
-            return RedirectToAction("Details", "Assignment", new { id = assignmentId});
+            return RedirectToAction("Details", "Assignment", new {id = assignmentId});
         }
 
 
-        public ActionResult CommentDetails(int id)
+        public ActionResult Details(int id)
         {
             AssignmentViewModel assignmentViewModel = new AssignmentViewModel();
-            var response = db.Response.Where(a => a.ID == id).SingleOrDefault();
-            var comments = db.Comment.Where(c => c.ResponseId == id).ToList();
+            var response = db.Response.SingleOrDefault(a => a.Id == id);
 
             assignmentViewModel.Response = response;
-            assignmentViewModel.Comments = comments;
-
-            assignmentViewModel.Responses = new List<Response>();
-            assignmentViewModel.Assignment = new Assignment();
+            if (response != null) assignmentViewModel.Comments = response.Comments;
 
             return View(assignmentViewModel);
         }

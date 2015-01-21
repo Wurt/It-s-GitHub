@@ -7,22 +7,24 @@ namespace ItsGitHub.Models
 {
    public class Response
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Content { get; set; }
         public int AssignmentId { get; set; }
-               public DateTime DateCreatedForResp
+        public Assignment Assignment;
+        public DateTime Created
         {
             get
             {
-                return this.dateCreated.HasValue
-                   ? this.dateCreated.Value
+                return this._dateCreated.HasValue
+                   ? this._dateCreated.Value
                    : DateTime.Now;
             }
 
-            set { this.dateCreated = value; }
+            set { this._dateCreated = value; }
         }
 
-        private DateTime? dateCreated = null;
+        public virtual List<Comment> Comments { get; set; } 
+        private DateTime? _dateCreated = null;
     }
 
     }

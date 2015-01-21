@@ -7,21 +7,22 @@ namespace ItsGitHub.Models
 {
     public class Comment
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Content { get; set; }
         public int ResponseId { get; set; }
-                public DateTime DateCreatedForComm
+        public Response Response;
+        public DateTime Created
         {
             get
             {
-                return this.dateCreated.HasValue
-                   ? this.dateCreated.Value
+                return this._dateCreated.HasValue
+                   ? this._dateCreated.Value
                    : DateTime.Now;
             }
 
-            set { this.dateCreated = value; }
+            set { this._dateCreated = value; }
         }
 
-        private DateTime? dateCreated = null;
+        private DateTime? _dateCreated = null;
     }
 }

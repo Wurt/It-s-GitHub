@@ -200,7 +200,7 @@
     <Content Include="Views\Assignment\Details.cshtml" />
     <Content Include="Views\Comment\Add.cshtml" />
     <Content Include="Views\Response\Add.cshtml" />
-    <Content Include="Views\Response\CommentDetails.cshtml" />
+    <Content Include="Views\Response\Details.cshtml" />
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Comment.cshtml" />

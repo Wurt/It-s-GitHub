@@ -7,14 +7,14 @@
 
 
 <div class="container">
-        <div class="assignment">
-            <ul>
-                @foreach (var assignment in Model)
-                {
-                    <li><a href="@Url.Action("Details", new { id = @assignment.ID })">@assignment.title</a></li>
-    @assignment.DateCreated
-                }
-            </ul>
-        </div>
+    <div class="assignment">
+        <ul>
+            @foreach (var assignment in Model)
+            {
+                <li><a href="@Url.Action("Details", new { id = @assignment.Id })">@assignment.Title</a></li>
+                @assignment.Created
+            }
+        </ul>
+    </div>
     <p><a href="@Url.Action("Create")">Create new assignment</a></p>
 </div>

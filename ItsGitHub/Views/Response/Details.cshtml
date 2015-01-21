@@ -14,7 +14,6 @@
 <div class="container">
     <div class="assignment">
         <h1>@Model.Response.Content</h1>
-        @*    @Model.Assignment.title ken wel*@
         @Html.Markdown(Model.Response.Content)
     </div>
 
@@ -31,15 +30,15 @@
 <div class="container">
 
     <div class="responses">
-@**@
+        @**@
         @foreach (var item in Model.Comments)
         {
 
-            <p>@item.Content @item.DateCreatedForComm</p>
+            <p>@item.Content @item.Created</p>
 
 
         }
     </div>
-    <p><a href="@Url.Action("Add", "Comment", new { ResponseId = @Model.Response.ID })">Add new Comment</a></p>
+    <p><a href="@Url.Action("Add", "Comment", new { ResponseId = @Model.Response.Id })">Add new Comment</a></p>
 </div>
 
