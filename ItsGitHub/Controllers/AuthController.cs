@@ -1,8 +1,7 @@
-﻿using ItsGitHub.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using ItsGitHub.Models;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,9 +10,16 @@ namespace ItsGitHub.Controllers
     [AllowAnonymous]
     public class AuthController : Controller
     {
-        public ActionResult LogIn()
+        private readonly UserManager<AppUser> userManager;
+
+        public AuthController()
+            : this(Startup.UserManagerFactory.Invoke())
         {
-            return View();
+        }
+
+        public AuthController(UserManager<AppUser> userManager)
+        {
+            this.userManager = userManager;
         }
 
         [HttpGet]
@@ -28,43 +34,66 @@ namespace ItsGitHub.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(LogInViewModel model)
+        public async Task<ActionResult> LogIn(LogInViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            // Don't do this in production!
-            if (model.Email == "me@jordify.nl" && model.Password == "itsgithub")
+            var user = await userManager.FindAsync(model.Email, model.Password);
+
+            if (user != null)
             {
-                var identity = new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.Name, "Jordi"),
-                new Claim(ClaimTypes.Email, "me@jordify.nl"),
-                new Claim(ClaimTypes.Country, "Netherlands")
-            },
-                    "ApplicationCookie");
-
-                var ctx = Request.GetOwinContext();
-                var authManager = ctx.Authentication;
-
-                authManager.SignIn(identity);
-
+                await SignIn(user);
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
             }
 
-            // user auth failed
+            // user authN failed
             ModelState.AddModelError("", "Invalid email or password");
             return View();
         }
 
         public ActionResult LogOut()
         {
-            var ctx = Request.GetOwinContext();
-            var authManager = ctx.Authentication;
-
-            authManager.SignOut("ApplicationCookie");
+            GetAuthenticationManager().SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("index", "home");
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = new AppUser
+            {
+                UserName = model.Email,
+                Country = model.Country
+            };
+
+            var result = await userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                await SignIn(user);
+                return RedirectToAction("index", "home");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+
+            return View();
         }
 
         private string GetRedirectUrl(string returnUrl)
@@ -76,6 +105,28 @@ namespace ItsGitHub.Controllers
 
             return returnUrl;
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && userManager != null)
+            {
+                userManager.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private async Task SignIn(AppUser user)
+        {
+            var identity = await userManager.CreateIdentityAsync(
+                user, DefaultAuthenticationTypes.ApplicationCookie);
+
+            GetAuthenticationManager().SignIn(identity);
+        }
+
+        private IAuthenticationManager GetAuthenticationManager()
+        {
+            var ctx = Request.GetOwinContext();
+            return ctx.Authentication;
+        }
     }
 }
-
