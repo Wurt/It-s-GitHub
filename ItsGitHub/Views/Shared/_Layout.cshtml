@@ -24,7 +24,15 @@
                     <!----<li>@Html.ActionLink("About", "About", "Home")</li>!--->
                     <!----<li>@Html.ActionLink("Contact", "Contact", "Home")</li>!--->
                     <li>@Html.ActionLink("Assignments", "Index", "Assignment")</li>
-                    <li>@Html.ActionLink("Logout", "Logout", "Auth")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Logout", "LogOut", "Auth")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Auth")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Auth")</li>
+                    }
                 </ul>
             </div>
         </div>

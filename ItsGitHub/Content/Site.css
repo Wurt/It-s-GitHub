@@ -40,3 +40,15 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+/* Temp holding area for some dirty site hacks */
+
+.responses {
+    border: 1px solid pink;
+    background-color: pink;
+}
+
+.comments {
+    border: 1px solid grey;
+    background-color: grey;
+}

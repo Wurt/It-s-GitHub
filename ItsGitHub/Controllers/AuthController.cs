@@ -77,7 +77,7 @@ namespace ItsGitHub.Controllers
             var user = new AppUser
             {
                 UserName = model.Email,
-                Country = model.Country
+                FullName = model.FullName
             };
 
             var result = await userManager.CreateAsync(user, model.Password);

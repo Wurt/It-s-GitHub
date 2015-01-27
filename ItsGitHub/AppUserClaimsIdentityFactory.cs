@@ -16,7 +16,7 @@ namespace ItsGitHub
             string authenticationType)
         {
             var identity = await base.CreateAsync(manager, user, authenticationType);
-            identity.AddClaim(new Claim(ClaimTypes.Country, user.Country));
+            identity.AddClaim(new Claim(ClaimTypes.Surname, user.FullName));
 
             return identity;
         }

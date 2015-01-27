@@ -10,7 +10,6 @@ namespace ItsGitHub.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "ItsGitHub.Models.ItsGitHubContext";
         }
 
         protected override void Seed(ItsGitHub.Models.ItsGitHubContext context)

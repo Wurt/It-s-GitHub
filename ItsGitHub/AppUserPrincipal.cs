@@ -21,12 +21,9 @@ namespace ItsGitHub
             }
         }
 
-        public string Country
+        public string FullName
         {
-            get
-            {
-                return this.FindFirst(ClaimTypes.Country).Value;
-            }
+            get { return this.FindFirst(ClaimTypes.Surname).Value; }
         }
     }
 }

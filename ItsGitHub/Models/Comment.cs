@@ -10,6 +10,7 @@ namespace ItsGitHub.Models
         public int Id { get; set; }
         public string Content { get; set; }
         public int ResponseId { get; set; }
+        public string CreatorName { get; set; }
         public Response Response;
         public DateTime Created
         {

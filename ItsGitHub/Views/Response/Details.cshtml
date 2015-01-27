@@ -2,14 +2,6 @@
     @model ItsGitHub.Models.AssignmentViewModel
     ViewBag.Title = "Response - " + @Model.Response.Content;
 }
-<style type="text/css">
-    .comments {
-        border: 1px solid grey;
-        background-color: grey;
-    }
-</style>
-
-
 
 <div class="container">
     <div class="assignment">
@@ -18,27 +10,17 @@
     </div>
 
 </div>
-<style type="text/css">
-    .responses {
-        border: 1px solid pink;
-        background-color: pink;
-    }
-</style>
-
-
 
 <div class="container">
 
     <div class="responses">
-        @**@
-        @foreach (var item in Model.Comments)
-        {
-
-            <p>@item.Content @item.Created</p>
-
-
-        }
+        <ul>
+            @foreach (var item in Model.Comments)
+            {
+                <li>@item.Content</li>
+                <text>By: </text> @item.CreatorName <text>on: </text> @item.Created
+            }
+        </ul>
     </div>
     <p><a href="@Url.Action("Add", "Comment", new { ResponseId = @Model.Response.Id })">Add new Comment</a></p>
 </div>
-

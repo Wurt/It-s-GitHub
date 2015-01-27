@@ -1,6 +1,10 @@
-﻿using ItsGitHub.Models;
+﻿using System.Data.Entity;
+using System.Management.Instrumentation;
+using ItsGitHub.Models;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 
 namespace ItsGitHub.Controllers
@@ -24,7 +28,6 @@ namespace ItsGitHub.Controllers
             var assignments = db.Assignment;
             var assignment = assignments.SingleOrDefault(a => a.Id == id);
 
-            // Get comments for assignments as well
             assignmentViewModel.Assignment = assignment;
             assignmentViewModel.Responses = assignment.Responses;
 
@@ -34,7 +37,8 @@ namespace ItsGitHub.Controllers
         [HttpPost]
         public ActionResult Create(Assignment assignment)
         {
-            
+            var currentUser = new UserManager<AppUser>(new UserStore<AppUser>(new AppDbContext())).FindById(User.Identity.GetUserId());
+            assignment.CreatorName = currentUser.FullName;
             db.Assignment.Add(assignment);
             db.SaveChanges();
 

@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Assignments";
-@model IEnumerable<ItsGitHub.Models.Assignment>
+    @model IEnumerable<ItsGitHub.Models.Assignment>
 }
 
 <h2>Assignments</h2>
@@ -8,12 +8,12 @@
 
 <div class="container">
     <div class="assignment">
-        <p>Hey @CurrentUser.Name! Here's some assignments for: @CurrentUser.Country</p>
+        <p>Hey @CurrentUser.FullName! Here's some assignments!</p>
         <ul>
             @foreach (var assignment in Model)
             {
-                <li><a href="@Url.Action("Details", new { id = @assignment.Id })">@assignment.Title</a></li>
-                @assignment.Created
+                <li><a href="@Url.Action("Details", new {id = @assignment.Id})">@assignment.Title</a></li>
+                <text>By: </text> @assignment.CreatorName <text>on: </text> @assignment.Created
             }
         </ul>
     </div>

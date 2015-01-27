@@ -5,11 +5,12 @@ using System.Web;
 
 namespace ItsGitHub.Models
 {
-   public class Response
+    public class Response
     {
         public int Id { get; set; }
         public string Content { get; set; }
         public int AssignmentId { get; set; }
+        public string CreatorName { get; set; }
         public Assignment Assignment;
         public DateTime Created
         {
@@ -23,9 +24,9 @@ namespace ItsGitHub.Models
             set { this._dateCreated = value; }
         }
 
-        public virtual List<Comment> Comments { get; set; } 
+        public virtual List<Comment> Comments { get; set; }
         private DateTime? _dateCreated = null;
     }
 
-    }
+}
 

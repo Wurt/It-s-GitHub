@@ -11,6 +11,5 @@ namespace ItsGitHub.Models
         public List<Response> Responses { get; set; }
         public Assignment Assignment { get; set; }
         public Response Response { get; set; }
-       
     }
 }

@@ -1,31 +1,29 @@
 ﻿using ItsGitHub.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ItsGitHub.Controllers
 {
     public class ResponseController : Controller
     {
-        private int _assignmentId;
 
         public ActionResult Add(int assignmentId)
         {
-            _assignmentId = assignmentId;
             return View();
         }
 
         [HttpPost]
         public ActionResult Add(int assignmentId, Response response)
         {
+            var currentUser = new UserManager<AppUser>(new UserStore<AppUser>(new AppDbContext())).FindById(User.Identity.GetUserId());
+            response.CreatorName = currentUser.FullName;
             response.AssignmentId = assignmentId;
             db.Response.Add(response);
             db.SaveChanges();
 
-            return RedirectToAction("Details", "Assignment", new {id = assignmentId});
+            return RedirectToAction("Details", "Assignment", new { id = assignmentId });
         }
 
 
