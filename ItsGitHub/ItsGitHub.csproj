@@ -159,6 +159,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +219,12 @@
     <Content Include="Views\Emails\Comment.cshtml" />
     <Content Include="Views\Auth\LogIn.cshtml" />
     <Content Include="Views\Auth\Register.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\RoleIndex.cshtml" />
+    <Content Include="Views\Roles\RoleCreate.cshtml" />
+    <Content Include="Views\Roles\RoleDelete.cshtml" />
+    <Content Include="Views\Roles\DeleteRoleForUser.cshtml" />
+    <Content Include="Views\Roles\RoleAddToUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

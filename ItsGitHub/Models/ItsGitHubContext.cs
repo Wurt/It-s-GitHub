@@ -7,6 +7,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ItsGitHub.Models
 {
+    public class ApplicationUser : IdentityUser
+    {
+    }
     public class ItsGitHubContext : DbContext
     {
         public DbSet<Assignment> Assignment { get; set; }
